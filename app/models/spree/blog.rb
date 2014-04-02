@@ -3,6 +3,7 @@ require 'redcarpet'
 class Spree::Blog < ActiveRecord::Base
   validates_presence_of [:title, :body, :permalink]
   make_permalink :with => :title
+  scope :published, -> { where published: true }
 
   def to_param
     permalink.present? ? permalink : (permalink_was || title.to_s.to_url)
