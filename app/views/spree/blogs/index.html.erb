@@ -1,0 +1,11 @@
+<h1>News</h1>
+
+<ul>
+  <% @blogs.each do |blog| %>
+    <li>
+      <span class="date"><%= blog.created_at.strftime("%d. %B %Y") %></span>
+      <%= link_to blog.title, blog_path(blog) %>
+      <span class="summary"><%= blog.summary %></span>
+    </li>
+  <% end %>
+</ul>
